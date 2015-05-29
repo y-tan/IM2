@@ -17,12 +17,10 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+ 
   ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-
-
-
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -36,7 +34,7 @@ require 'rspec/rails'
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true 
 config.include Capybara::DSL
- end
+end
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
@@ -94,7 +92,9 @@ config.include Capybara::DSL
 
 end
 
-
+RSpec.configure do |config|
+  config.include Rails.application.routes.url_helpers
+end
 
 
 
